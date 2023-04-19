@@ -3,6 +3,13 @@ import json
 
 app = Flask(__name__)
 
+
+@app.route('/data', methods=['GET'])
+def get_data():
+    with open("data.json") as f:
+        data = json.load(f)
+    return json.dumps(data)
+
 @app.route('/update', methods=['POST'])
 def update():
     new_data = json.loads(request.get_json())
