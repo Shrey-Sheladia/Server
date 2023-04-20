@@ -2,7 +2,7 @@ import json
 import requests
 from datetime import datetime
 
-URL = "http://10.0.0.61:5000/update"
+URL = "http://172.31.23.209:5000"
 def log_action(option_selected, session_id):
     now = datetime.now()
 
