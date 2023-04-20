@@ -1,5 +1,18 @@
-from flask import Flask, request
+import os
+import telebot
 import json
+from flask import Flask, request
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except:
+    pass
+
+API_KEY = os.environ.get("telegrambotAPI_key")
+CHAT_ID = os.environ.get("CHAT_ID")
+
+bot1 = telebot.TeleBot(API_KEY)
 
 app = Flask(__name__)
 
@@ -14,8 +27,15 @@ def get_data():
 def update():
     new_data = json.loads(request.get_json())
 
-    updateFile(new_data)
-    return 'JSON file updated!'
+    if "Start" in new_data:
+        bot1.send_message(CHAT_ID, f"Website being used at {new_data['Start']}")
+        print(f"Website being used at {new_data['Start']}")
+
+    else:
+        updateFile(new_data)
+        return 'JSON file updated!'
+    
+    return "Sent New message"
 
 
 def updateFile(jsonFile):
