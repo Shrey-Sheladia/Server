@@ -1,1 +1,33 @@
-{"19/04/2023": {"17:07:10": {"Info": "Options Here", "ID": "SomeUID"}}}
+{
+    "19/04/2023": {
+
+        "17:47:34": {
+            "Info": "Mode: Current Classes | Hall: Academic Surge Bldg",
+            "ID": "85fd2e8a-f2e6-4fa0-9377-df36961a7c4e"
+        },
+        "17:47:44": {
+            "Info": "Mode: Current Classes | Hall: Academic Surge Bldg",
+            "ID": "77521393-7893-4408-8d91-897119aa9b28"
+        },
+        "17:48:31": {
+            "Info": "Mode: Current Classes | Hall: Wellman Hall",
+            "ID": "77521393-7893-4408-8d91-897119aa9b28"
+        },
+        "17:48:53": {
+            "Info": "Mode: Current Classes | Hall: Wellman Hall and Time: 04: 00",
+            "ID": "77521393-7893-4408-8d91-897119aa9b28"
+        },
+        "17:49:21": {
+            "Info": "Mode: Current Classes | Hall: Wellman Hall and Time: 04: 40",
+            "ID": "77521393-7893-4408-8d91-897119aa9b28"
+        },
+        "17:51:34": {
+            "Info": "Mode: Current Classes | Hall: Academic Surge Bldg",
+            "ID": "99d2e967-69c5-4cb6-bf63-dffb24146881"
+        },
+        "17:51:56": {
+            "Info": "Mode: Current Classes | Hall: Giedt",
+            "ID": "99d2e967-69c5-4cb6-bf63-dffb24146881"
+        }
+    }
+}
