@@ -1,7 +1,9 @@
 import os
-import telebot
 import json
+import telebot
+import threading
 from flask import Flask, request
+
 
 try:
     from dotenv import load_dotenv
@@ -16,6 +18,21 @@ bot1 = telebot.TeleBot(API_KEY)
 
 app = Flask(__name__)
 
+@bot1.message_handler(commands=['get_file'])
+def send_log_file(message):
+    log_file_path = "data.json"
+    if os.path.exists(log_file_path):
+        with open(log_file_path, "rb") as log_file:
+            bot1.send_document(chat_id=CHAT_ID, document=log_file, caption="data.json")
+    else:
+        bot1.reply_to(message, "data.json file not found")
+
+
+def polling_thread():
+    bot1.polling()
+
+thread = threading.Thread(target=polling_thread)
+thread.start()
 
 @app.route('/data', methods=['GET'])
 def get_data():
