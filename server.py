@@ -1,9 +1,12 @@
 import os
 import json
+# import jsonify
 import telebot
 import threading
 from datetime import datetime
 from flask import Flask, request
+from flask import jsonify
+
 
 
 try:
@@ -106,6 +109,43 @@ def updateFile(jsonFile):
 
     with open('data.json', 'w') as f:
         json.dump(old_data, f)
+
+
+
+
+### Topic List
+
+@app.route('/get_list_data')
+def get_list_data():
+    # Load the actualNames.json file and return it as a response
+    with open('actualNames.json', 'r') as f:
+        actualNames = json.load(f)
+    # Load the topic_and_count.json file and return it as a response
+    with open('topic_and_count.json', 'r') as f:
+        topic_and_count = json.load(f)
+    return jsonify({
+        'actualNames': actualNames,
+        'topicAndCount': topic_and_count
+    })
+
+@app.route('/change_list_data', methods=['POST'])
+def topic_update():
+    new_data = json.loads(request.get_data())
+    data = new_data
+
+    actualNames = data['actualNames']
+    topic_and_count = data['topicAndCount']
+
+    with open('actualNames.json', 'w') as f:
+            json.dump(actualNames, f)
+    with open('topic_and_count.json', 'w') as f:
+        json.dump(topic_and_count, f)
+
+    return "Files Updated"
+
+
+    
+
 
 
 app.run(host='0.0.0.0', port=5000)
